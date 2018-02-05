@@ -757,3 +757,668 @@ Processing by ArtistsController#show as HTML
   [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?  [["artist_id", 1]]
   Rendered artists/show.html.erb within layouts/application (9.7ms)
 Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/artists" for 127.0.0.1 at 2018-02-05 16:18:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArtistsController#index as HTML
+  [1m[35mArtist Load (0.1ms)[0m  SELECT "artists".* FROM "artists"
+  Rendered artists/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 125ms (Views: 121.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/artists/1/songs" for 127.0.0.1 at 2018-02-05 16:18:13 -0500
+Processing by SongsController#index as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[36mArtist Load (0.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?  [["artist_id", 1]]
+  Rendered songs/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 41ms (Views: 13.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2018-02-05 16:18:22 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.2ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2018-02-05 16:18:27 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtist Load (0.6ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:18:34 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  Rendered songs/_form.html.erb (15.4ms)
+  Rendered songs/new.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 28ms (Views: 27.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:20:42 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  Rendered songs/_form.html.erb (23.7ms)
+  Rendered songs/new.html.erb within layouts/application (25.4ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `author_id' for #<Song:0x007fcb3d35aad8>):
+    1: <%= form_for @song  do |f| %>
+    2:   <%= f.hidden_field :author_id%>
+    3:   <%= f.label :title %>
+    4:   <%= f.text_field :title %><br>
+    5:   <%= f.label :artist_name %>
+  app/views/songs/_form.html.erb:2:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255441204840'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255441204840'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (10.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (24.3ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:20:56 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  Rendered songs/_form.html.erb (11.9ms)
+  Rendered songs/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists/1/songs/1" for 127.0.0.1 at 2018-02-05 16:21:23 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mArtist Load (0.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSong Load (0.4ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1  [["artist_id", 1], ["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 15ms (Views: 10.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:21:33 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.2ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (7.5ms)
+  Rendered songs/edit.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:27:54 -0500
+
+SyntaxError (/home/donnadieu/labs/modification-nested-routes-lab-v-000/app/helpers/songs_helper.rb:10: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/helpers/songs_helper.rb:10: syntax error, unexpected end-of-input, expecting keyword_end
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/songs_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (9.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (22.5ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:28:10 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (5.5ms)
+  Rendered songs/edit.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 17ms (Views: 10.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:28:53 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (13.9ms)
+  Rendered songs/edit.html.erb within layouts/application (14.7ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `artist_id_field' for #<ActionView::Helpers::FormBuilder:0x007fcb3f0f3c48>):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= f.artist_id_field(@song) %>
+    4: 
+    5:   <%= f.label :title %>
+    6:   <%= f.text_field :title %><br>
+  app/views/songs/_form.html.erb:3:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255439727120'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255439727120'
+  app/views/songs/edit.html.erb:2:in `_app_views_songs_edit_html_erb__1574778018322281857_70255451194020'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (30.5ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:29:03 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[35mSong Load (0.3ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (7.4ms)
+  Rendered songs/edit.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:30:10 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  Rendered songs/_form.html.erb (3.3ms)
+  Rendered songs/new.html.erb within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 3..4)):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= artist_id_field(@song) %>
+    4: 
+    5:   <%= f.label :title %>
+    6:   <%= f.text_field :title %><br>
+  app/helpers/songs_helper.rb:5:in `artist_id_field'
+  app/views/songs/_form.html.erb:3:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (25.5ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:30:47 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  Rendered songs/_form.html.erb (3.2ms)
+  Rendered songs/new.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 169996ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= artist_id_field(@song) %>
+    4: 
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (14.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (11.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (24.8ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:33:40 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[35mArtist Exists (0.2ms)[0m  SELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (10.7ms)
+  Rendered songs/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 32ms (Views: 15.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:34:04 -0500
+Processing by SongsController#new as HTML
+  Rendered songs/_form.html.erb (1.7ms)
+  Rendered songs/new.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= artist_id_field(@song) %>
+    4: 
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (25.6ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:34:28 -0500
+Processing by SongsController#new as HTML
+  Rendered songs/_form.html.erb (8.1ms)
+  Rendered songs/new.html.erb within layouts/application (8.5ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 3..4)):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= artist_id_field(@song) %>
+    4: 
+    5:   <%= f.label :title %>
+    6:   <%= f.text_field :title %><br>
+  app/helpers/songs_helper.rb:5:in `artist_id_field'
+  app/views/songs/_form.html.erb:3:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (30.2ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:35:10 -0500
+Processing by SongsController#new as HTML
+  Rendered songs/_form.html.erb (5.4ms)
+  Rendered songs/new.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 3..4)):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= artist_id_field(@song) %>
+    4: 
+    5:   <%= f.label :title %>
+    6:   <%= f.text_field :title %><br>
+  app/helpers/songs_helper.rb:5:in `artist_id_field'
+  app/views/songs/_form.html.erb:3:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (28.0ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:35:13 -0500
+Processing by SongsController#new as HTML
+  Rendered songs/_form.html.erb (3.6ms)
+  Rendered songs/new.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 3..4)):
+    1: <%= form_for @song  do |f| %>
+    2: 
+    3:   <%= artist_id_field(@song) %>
+    4: 
+    5:   <%= f.label :title %>
+    6:   <%= f.text_field :title %><br>
+  app/helpers/songs_helper.rb:5:in `artist_id_field'
+  app/views/songs/_form.html.erb:3:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255462477540'
+  app/views/songs/new.html.erb:2:in `_app_views_songs_new_html_erb___1102417728077099556_70255436387680'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (25.2ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:36:09 -0500
+Processing by SongsController#new as HTML
+  [1m[35mArtist Load (0.2ms)[0m  SELECT "artists".* FROM "artists"
+  Rendered songs/_form.html.erb (12.1ms)
+  Rendered songs/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 20ms (Views: 16.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:36:19 -0500
+Processing by SongsController#new as HTML
+  [1m[36mArtist Load (0.5ms)[0m  [1mSELECT "artists".* FROM "artists"[0m
+  Rendered songs/_form.html.erb (11.7ms)
+  Rendered songs/new.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 22ms (Views: 17.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:37:22 -0500
+Processing by SongsController#new as HTML
+  [1m[35mArtist Load (0.2ms)[0m  SELECT "artists".* FROM "artists"
+  Rendered songs/_form.html.erb (3.9ms)
+  Rendered songs/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:37:29 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (1.6ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.4ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (5.6ms)
+  Rendered songs/edit.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 21ms (Views: 15.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:38:30 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (17.8ms)
+  Rendered songs/edit.html.erb within layouts/application (19.1ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (undefined method `author' for #<Song:0x007fcb3f6a6780>):
+    2: 
+    3:   <%= f.label :title %>
+    4:   <%= f.text_field :title %><br>
+    5:   <%= artist_id_field(@song) %>
+    6:   <br />
+    7: 
+    8:   <%= f.submit %>
+  app/helpers/songs_helper.rb:8:in `artist_id_field'
+  app/views/songs/_form.html.erb:5:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255299151260'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255299151260'
+  app/views/songs/edit.html.erb:2:in `_app_views_songs_edit_html_erb__1574778018322281857_70255451194020'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (30.4ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:38:45 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.6ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (10.7ms)
+  Rendered songs/edit.html.erb within layouts/application (11.5ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.1ms)
+
+ActionView::Template::Error (wrong number of arguments (given 1, expected 2..4)):
+    2: 
+    3:   <%= f.label :title %>
+    4:   <%= f.text_field :title %><br>
+    5:   <%= artist_id_field(@song) %>
+    6:   <br />
+    7: 
+    8:   <%= f.submit %>
+  app/helpers/songs_helper.rb:8:in `artist_id_field'
+  app/views/songs/_form.html.erb:5:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255299151260'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255299151260'
+  app/views/songs/edit.html.erb:2:in `_app_views_songs_edit_html_erb__1574778018322281857_70255451194020'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.2ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (27.8ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:39:37 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (15.3ms)
+  Rendered songs/edit.html.erb within layouts/application (16.4ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (undefined method `author' for #<Song:0x007fcb3eeb1048>):
+    4: 
+    5:   <%= f.label :title %>
+    6:   <%= f.text_field :title %><br>
+    7:   <%= f.label :artist_name unless @song.author %>
+    8:   <%= f.text_field :artist_name %>
+    9:   <br />
+   10: 
+  app/views/songs/_form.html.erb:7:in `block in _app_views_songs__form_html_erb__1977001130112729994_70255459693800'
+  app/views/songs/_form.html.erb:1:in `_app_views_songs__form_html_erb__1977001130112729994_70255459693800'
+  app/views/songs/edit.html.erb:2:in `_app_views_songs_edit_html_erb__1574778018322281857_70255451194020'
+
+
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.6ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/donnadieu/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.2ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:39:56 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (7.8ms)
+  Rendered songs/edit.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 21ms (Views: 14.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 16:40:01 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (5.9ms)
+  Rendered songs/edit.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:40:10 -0500
+Processing by SongsController#new as HTML
+  [1m[36mArtist Load (0.1ms)[0m  [1mSELECT "artists".* FROM "artists"[0m
+  Rendered songs/_form.html.erb (2.0ms)
+  Rendered songs/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:40:17 -0500
+Processing by SongsController#new as HTML
+  [1m[35mArtist Load (0.4ms)[0m  SELECT "artists".* FROM "artists"
+  Rendered songs/_form.html.erb (7.8ms)
+  Rendered songs/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:40:27 -0500
+Processing by SongsController#new as HTML
+  [1m[36mArtist Load (0.4ms)[0m  [1mSELECT "artists".* FROM "artists"[0m
+  Rendered songs/_form.html.erb (7.4ms)
+  Rendered songs/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2018-02-05 16:40:48 -0500
+Processing by SongsController#new as HTML
+  [1m[35mArtist Load (0.6ms)[0m  SELECT "artists".* FROM "artists"
+  Rendered songs/_form.html.erb (9.6ms)
+  Rendered songs/new.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 16:41:50 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[36mArtist Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (3.5ms)
+  Rendered songs/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 16ms (Views: 9.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2018-02-05 17:55:34 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[36mArtist Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (4.4ms)
+  Rendered songs/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 19ms (Views: 10.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2018-02-05 17:55:41 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtist Load (0.5ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 18ms (Views: 15.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/artists/1/songs/1" for 127.0.0.1 at 2018-02-05 17:55:46 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mArtist Load (0.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mSong Load (0.5ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1  [["artist_id", 1], ["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/artists/1/songs/1/edit" for 127.0.0.1 at 2018-02-05 17:55:50 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[36mArtist Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["artist_id", 1], ["id", 1]]
+  [1m[35mSong Load (0.2ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1  [["artist_id", 1], ["id", 1]]
+  Rendered songs/_form.html.erb (2.0ms)
+  Rendered songs/edit.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 19ms (Views: 6.2ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/songs/1" for 127.0.0.1 at 2018-02-05 17:56:07 -0500
+Processing by SongsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"us7XXPe/t6zQyGrf7Y2nf46AQdEc0BeOCcqmXAH7OjuWzhRX2b9wWVDU6AJf4ZAXZBpq8U9/eEwXeUje8WRWVA==", "song"=>{"title"=>"Mr. Brightsid", "artist_name"=>"The Killers"}, "artist"=>{"artist_id"=>"1"}, "commit"=>"Update Song", "id"=>"1"}
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mArtist Load (0.1ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = ? LIMIT 1[0m  [["name", "The Killers"]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "songs" SET "title" = ?, "updated_at" = ? WHERE "songs"."id" = ?  [["title", "Mr. Brightsid"], ["updated_at", "2018-02-05 22:56:07.824155"], ["id", 1]]
+  [1m[36m (201.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/songs/1
+Completed 302 Found in 211ms (ActiveRecord: 202.5ms)
+
+
+Started GET "/songs/1" for 127.0.0.1 at 2018-02-05 17:56:08 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSong Load (0.2ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/songs" for 127.0.0.1 at 2018-02-05 17:56:13 -0500
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (0.3ms)[0m  SELECT "songs".* FROM "songs"
+  [1m[36mArtist Load (0.1ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (0.1ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mArtist Load (0.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.7ms)
